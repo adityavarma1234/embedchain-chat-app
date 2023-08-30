@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, Response
+from flask_cors import CORS  # Import CORS
 from werkzeug.utils import secure_filename
 import os
 from embedchain import App
@@ -9,6 +10,9 @@ app.config['UPLOAD_FOLDER'] = '/tmp'
 
 os.environ["OPENAI_API_KEY"] = "YOURAPI_KEY" # need to set up billing for this
 embedchain = App()
+
+# Configure CORS to allow requests from your frontend URL
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
 
 # Function to handle file uploads
 def allowed_file(filename):
