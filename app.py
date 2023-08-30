@@ -7,7 +7,7 @@ from embedchain import App
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = '/tmp' 
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "YOURAPI_KEY" # need to set up billing for this
 embedchain = App()
 
 # Function to handle file uploads
