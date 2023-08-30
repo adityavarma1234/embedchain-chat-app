@@ -39,7 +39,7 @@ def upload_file():
 
         # Integrate the file with embedchain here using embedchain.add()
         # Example: embedchain.add(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        # embedchain.add(os.path.join(app.config['UPLOAD_FOLDER'], filename), data_type=data_type_of_file(filename))
+        embedchain.add(os.path.join(app.config['UPLOAD_FOLDER'], filename), data_type=data_type_of_file(filename))
         return jsonify({"message": "File uploaded and integrated with embedchain successfully"})
 
     return jsonify({"error": "Invalid file format"})
