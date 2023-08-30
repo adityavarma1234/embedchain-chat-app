@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from werkzeug.utils import secure_filename
 import os
 from embedchain import App
@@ -41,9 +41,7 @@ def upload_file():
         # Example: embedchain.add(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         embedchain.add(os.path.join(app.config['UPLOAD_FOLDER'], filename), data_type=data_type_of_file(filename))
         return jsonify({"message": "File uploaded and integrated with embedchain successfully"})
-
-    return jsonify({"error": "Invalid file format"})
-
+    return Response("{'error': 'Invalid file format'}", status=400, mimetype='application/json')
 
 # app.py
 @app.route('/api/chat', methods=['POST'])
